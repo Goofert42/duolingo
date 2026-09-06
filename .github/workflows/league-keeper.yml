@@ -1,0 +1,16 @@
+name: Get to the top of League
+
+on:
+  schedule:
+    - cron: '0 9 * * 0'
+
+jobs:
+  study:
+    runs-on: ubuntu-slim
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - run: bun index.js
+        env:
+          DUOLINGO_JWT: ${{ secrets.DUOLINGO_JWT }}
+          LESSONS: 100
